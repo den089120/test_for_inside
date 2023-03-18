@@ -2,7 +2,7 @@
   <div class="chat_name">
     <div class="box">
       <div class="content">
-        <RouterLink :to="{name: 'ChatContent'}" class="chat_href">тема чата: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, quam!</RouterLink>
+        <RouterLink :to="{name: 'ChatContent'}" @click="setChat" class="chat_href">тема чата: {{chatTopic}}</RouterLink>
       </div>
     </div>
   </div>
@@ -10,9 +10,21 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
+import { mapActions } from 'pinia';
+import {useUserStore} from "@/Store/UserStore/UserStore";
 
 export default defineComponent({
-  name: "ChatName"
+  name: "ChatName",
+  props: {
+    chatTopic: String,
+    chatId: Number,
+  },
+  methods: {
+    ...mapActions(useUserStore, ['setChatId']),
+    setChat() {
+      this.setChatId(this.chatId)
+    }
+  },
 })
 </script>
 

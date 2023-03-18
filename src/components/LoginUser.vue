@@ -7,15 +7,15 @@
         <div class="form">
           <h2>Sing in</h2>
           <div class="input_box">
-            <input type="text" required>
-            <span>Username</span>
+            <input v-model="userName" type="text" required>
+            <span>Логин</span>
           </div>
           <div class="input_box">
-            <input type="password" required>
-            <span>Password</span>
+            <input v-model="userPassword" type="password" required>
+            <span>Пароль</span>
           </div>
           <div class="input_box">
-            <input class="input_submit" type="submit" value="Sign_in">
+            <input class="input_submit" @click="registrationUser(userName, userPassword)" type="submit" value="Войти">
           </div>
         </div>
       </div>
@@ -25,9 +25,20 @@
 
 <script lang="ts">
 import {defineComponent} from "vue";
+import { mapActions } from 'pinia';
+import {useUserStore} from "@/Store/UserStore/UserStore";
 
 export default defineComponent({
-  name: "LoginUser"
+  name: "LoginUser",
+  data() {
+    return {
+      userName: '',
+      userPassword: '',
+    }
+  },
+  methods: {
+    ...mapActions(useUserStore, ['registrationUser'])
+  },
 })
 </script>
 
