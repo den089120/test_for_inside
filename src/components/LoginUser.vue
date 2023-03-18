@@ -49,7 +49,7 @@ export default defineComponent({
       left: -100px;
       width: 100px;
       height: 100px;
-      background: #cfd1e1;
+      background: $color-back;
       z-index: 10;
     }
     .shadow {
@@ -80,7 +80,7 @@ export default defineComponent({
         align-items: center;
         h2 {
           font-size: 2em;
-          color: #444;
+          color: $color-font;
           margin-bottom: 20px;
         }
         .input_box {
@@ -95,26 +95,26 @@ export default defineComponent({
             background: transparent;
             box-shadow: none;
             border: none;
-            border-bottom: 3px solid #444;
+            border-bottom: 3px solid $color-font;
             outline: none;
-            color: #444;
+            color: $color-font;
           }
           input:focus ~ span,
           input:valid ~ span {
             transform: translateY(-20px);
             font-size: 0.9em;
-            background: #444;
+            background: $color-font;
             color: #fff;
             padding: 2px 4px;
           }
           .input_submit {
-            background: #444;
+            background: $color-font;
             color: #fff;
             cursor: pointer;
             padding: 10px;
           }
           .input_submit:hover {
-            background: #333;
+            background: $color-hover;
           }
           span {
             position: absolute;
@@ -123,7 +123,7 @@ export default defineComponent({
             padding: 10px 0 10px 25px;
             font-size: 1.25em;
             pointer-events: none;
-            color: #444;
+            color: $color-font;
             transition: 0.5s;
           }
         }

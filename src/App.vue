@@ -23,6 +23,10 @@ body {
   font-family: Consolas;
   background: $color-back;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 .container {
   margin-top: 70px;
 }
