@@ -1,6 +1,26 @@
 # test_for_inside
 
-## Project setup
+### Начало работ
+````
+произвел сборку проекта на vue, 
+добавил роутер vue-router для постраничной навигации,
+добавил хранилище данных pinia,
+подключил typeScript и scss.
+````
+
+### Верстка
+````
+Сверстал все страницы.
+````
+
+### Логика
+````
+написал запросы к серверу,
+подключил WebSocket.
+оформил вывод на страницу.
+````
+
+### Project setup
 ```
 npm install
 ```
@@ -19,6 +39,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
