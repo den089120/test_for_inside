@@ -1,7 +1,7 @@
 <template>
   <div class="message_it">
-    <div class="name">Макар</div>
-    <div class="text">Привет, как дела?</div>
+    <div class="name">{{nameIt}}</div>
+    <div class="text">{{messageIt}}</div>
     <div class="time">12:32</div>
   </div>
 </template>
@@ -10,7 +10,11 @@
 import {defineComponent} from "vue";
 
 export default defineComponent({
-  name: "ItMessage"
+  name: "ItMessage",
+  props: {
+    messageIt: String,
+    nameIt: String,
+  },
 })
 </script>
 
@@ -19,6 +23,7 @@ export default defineComponent({
   position: relative;
   margin-left: 15px;
   border-radius: 5px;
+  margin-top: 6px;
   width: 65%;
   background: rgb(243, 243, 243);
   max-width: 540px;

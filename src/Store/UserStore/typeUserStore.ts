@@ -1,14 +1,8 @@
 export interface TypeUserStore {
-    isDropdown: boolean;
-    isShow: TypeViewNavItem;
-    isActiveNavbar: TypeViewNavItem;
     User: UserSchema;
     topics: TopicsSchema;
     chatId: number;
-}
-
-export interface TypeViewNavItem {
-    [index: string]: boolean;
+    mySocket: WebSocket | null;
 }
 
 export interface UserSchema {

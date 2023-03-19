@@ -15,7 +15,7 @@
             <span>Пароль</span>
           </div>
           <div class="input_box">
-            <input class="input_submit" @click="registrationUser(userName, userPassword)" type="submit" value="Войти">
+            <input class="input_submit" @click.prevent="registrationUser(userName, userPassword)" type="submit" value="Войти">
           </div>
         </div>
       </div>

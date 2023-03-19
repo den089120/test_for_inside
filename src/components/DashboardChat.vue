@@ -1,8 +1,6 @@
 <template>
   <div class="chat_container">
-    <ChatName v-for="(value, key) in topics" :key="key" />
-    <ChatName/>
-    <ChatName/>
+    <ChatName v-for="(value, key) in topics" :key="key" :chat-topic="value" :chat-id="parseInt(key)"/>
   </div>
 </template>
 

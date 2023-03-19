@@ -1,22 +1,33 @@
 <template>
   <div class="navbar_container">
     <div class="menu">
-      <RouterLink :to="{name: 'DashboardChat'}" class="menu_item">Список чатов</RouterLink>
+      <RouterLink :to="{name: 'DashboardChat'}" :disabled="User.isAuth"  class="menu_item">Список чатов</RouterLink>
     </div>
     <div class="user_name">
-      <div>Hello Username</div>
+      <div>Здравствуйте {{User.userName}}</div>
     </div>
     <div class="navbar_login">
-      <h3 class="menu_item">log-out</h3>
+      <div class="menu_item" @click="logOutUser">Выйти</div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue";
+import { mapState, mapActions } from 'pinia';
+import {useUserStore} from "@/Store/UserStore/UserStore";
 
 export default defineComponent({
-  name: "NavBar"
+  name: "NavBar",
+  data() {
+    return {}
+  },
+  computed: {
+    ...mapState(useUserStore, ['User'])
+  },
+  methods: {
+    ...mapActions(useUserStore, ['logOutUser'])
+  },
 })
 </script>
 

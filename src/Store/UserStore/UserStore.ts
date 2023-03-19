@@ -5,10 +5,9 @@ import {router} from "@/Router";
 
 
 export const useUserStore = defineStore({
-    id: 'globalStore',
+    id: 'userStore',
     state: (): TypeUserStore => {
         return {
-            isDropdown: false,
             User: {
                 userName: '',
                 isAuth: false,
@@ -18,32 +17,33 @@ export const useUserStore = defineStore({
                 23 : 'техническое состояние машин',
             },
             chatId: 0,
-
-
-            isShow: {
-                ShowHexaNavigation: false,
-                ShowKeeperNav: false,
-            },
-            isActiveNavbar: {
-                activeIs_1: false,
-                activeIs_2: false,
-                activeIs_3: false,
-                activeIs_4: false,
-                activeIs_5: false,
-                activeIs_6: false,
-                activeIs_7: false,
-                activeIs_8: false,
-                activeIs_9: false,
-                activeIs_10: false,
-                activeIs_11: false,
-                activeIs_12: false,
-            }
+            mySocket: null,
         }
     },
-    getters: {},
+    getters: {
+        getLocaleStorage () {
+            const obj = localStorage.getItem(this.User.userName)
+            return obj ? JSON.parse(obj) : ''
+        },
+    },
     actions: {
         setChatId(id: number | undefined):void {
             if (id)  this.chatId = id
+        },
+        closeSocket() {
+            if (this.mySocket) {
+                this.mySocket.close()
+            }
+        },
+        setSocket(socket: WebSocket) {
+            this.mySocket = socket
+        },
+        async logOutUser() {
+            localStorage.removeItem(this.User.userName)
+            this.User.userName = ''
+            this.User.isAuth = false
+            this.closeSocket()
+            await router.push({name: 'LoginUser'})
         },
         async registrationUser(nameUser: string, password: string) {
             try {
@@ -91,14 +91,5 @@ export const useUserStore = defineStore({
                 }
             }
         },
-        changeDropdown(): void {
-            Object.keys(this.isActiveNavbar).forEach(el => this.isActiveNavbar[el] = false)
-            this.isDropdown = !this.isDropdown
-        },
-        changeActive(name: string | undefined):void {
-            Object.keys(this.isActiveNavbar).forEach(el => this.isActiveNavbar[el] = false)
-            this.isDropdown = false
-            if (name) this.isActiveNavbar[name] = true
-        }
     },
 })

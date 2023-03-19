@@ -19,11 +19,6 @@ const routes = [
         name: 'ChatContent',
         component: ChatContent,
     },
-    // {
-    //     path: '/StoresHexagram',
-    //     name: 'StoresHexagram',
-    //     component: StoresHexagram,
-    // },
 ]
 
 export const router = createRouter({
